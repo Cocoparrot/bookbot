@@ -1,12 +1,20 @@
 from stats import count_words, get_char_count, sort_char_count
+import sys
 
-filepath = 'books/frankenstein.txt'
 
 def get_book_text(filepath):
     with open(filepath) as file:
         return file.read()
 
+# Main function to analyze the book
+# and print the results
 def main():
+    
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    
+    filepath = sys.argv[1]
     text = get_book_text(filepath)
     num_words = count_words(text)
     char_counts = get_char_count(text)
@@ -25,4 +33,3 @@ def main():
     print("============= END ===============")
 if __name__ == "__main__":
     main()
-# This code reads the content of a file named 'book.txt' and prints it to the console.  
